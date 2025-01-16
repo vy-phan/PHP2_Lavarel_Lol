@@ -1,0 +1,47 @@
+/* Cơ sở vật chất */
+.cosovc{
+    background-color: rgb(222, 0, 0);
+}
+
+/* Quy trình tuyển sinh */
+.process-step {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.process-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(to bottom, #e74c3c, #c0392b);
+    color: white;
+    font-size: 24px;
+    line-height: 80px;
+    text-align: center;
+    position: relative;
+    margin: 0 auto 15px;
+    font-weight: bold;
+    clip-path: polygon(
+        50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 91%,
+        50% 70%,
+        21% 91%,
+        32% 57%,
+        2% 35%,
+        39% 35%
+    );
+}
+
+.btn-custom {
+    background-color: #d9534f;
+    color: white;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.btn-custom:hover {
+    background-color: #c9302c;
+}

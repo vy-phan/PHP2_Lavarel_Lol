@@ -1,0 +1,117 @@
+.logo {
+    width: 4.8em;
+}
+
+.logo-navbar {
+    width: 2.8em;
+}
+
+.seacher {
+    width: 30em;
+}
+
+.bg-navbar {
+    background-color: rgb(20, 194, 171);
+}
+
+.fixed-header-wrapper {
+    background: white;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+body {
+    padding-top: 140px;
+}
+
+@media (max-width: 991px) {
+    body {
+        padding-top: 56px;
+    }
+
+    .navbar {
+        padding: 0;
+    }
+
+    .navbar-brand {
+        padding: 0;
+    }
+}
+
+/* Footer */
+.footer-area {
+    background-color: #d9cab3;
+}
+
+.footer-widget h4 {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #3e2723;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links a {
+    color: #3e2723;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a:hover {
+    color: #6d4c41;
+}
+
+.social-icon {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: #ffffff !important;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icon i {
+    color: #ffffff !important;
+}
+
+.social-icon:hover {
+    transform: translateY(-2px);
+    color: white;
+}
+
+.social-icon.facebook {
+    background-color: #1877f2;
+}
+
+.social-icon.tiktok {
+    background-color: #000000;
+}
+
+.social-icon.youtube {
+    background-color: #ff0000;
+}
+
+/* Các style khác giữ nguyên */
+.footer-bottom {
+    background-color: #8d6e63 !important;
+}
+
+.footer-bottom p {
+    color: #fbe9e7;
+}
+
+.footer-widget i {
+    color: #6d4c41;
+}

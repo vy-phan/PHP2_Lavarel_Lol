@@ -1,0 +1,477 @@
+/* Card hover effects */
+.program-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.program-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+}
+
+.program-card img {
+    transition: all 0.3s ease;
+}
+
+.program-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Activity hover effects */
+.activity-item {
+    transition: all 0.3s ease;
+}
+
+.activity-item:hover {
+    transform: translateY(-5px);
+}
+
+.activity-item:hover i {
+    animation: bounce 0.5s ease infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Timeline style and animation */
+.timeline-item {
+    position: relative;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    width: 20px;
+    height: 2px;
+    background: #dc3545;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
+}
+
+.timeline-item:hover::before {
+    width: 30px;
+    background: #0d6efd;
+}
+
+/* Form hover effects */
+.form-control:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.25rem rgba(220,53,69,.25);
+}
+
+.btn-danger {
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0.5rem 1rem rgba(220,53,69,.15);
+}
+
+/* Table styles and hover animation */
+.fees-table {
+    font-size: 0.9rem;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.fees-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    padding: 12px 15px;
+    white-space: nowrap;
+}
+
+.fees-table td {
+    padding: 10px 15px;
+    vertical-align: middle;
+}
+
+.fees-table tbody tr {
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.fees-table tbody tr:hover {
+    background-color: rgba(13,110,253,.05);
+    transform: scale(1.01);
+}
+
+.fees-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+/* Table responsive */
+@media (max-width: 768px) {
+    .fees-table {
+        font-size: 0.85rem;
+    }
+
+    .fees-table th, 
+    .fees-table td {
+        padding: 8px 10px;
+    }
+
+    .table-wrapper {
+        margin: 0 -15px;
+        padding: 0 15px;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    }
+
+    .table-wrapper::-webkit-scrollbar { /* WebKit */
+        display: none;
+    }
+
+    .fees-table {
+        min-width: 500px;
+    }
+}
+
+/* Card info hover effect */
+.info-card {
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+}
+
+.info-card i {
+    transition: all 0.3s ease;
+}
+
+.info-card:hover i {
+    transform: scale(1.2);
+    color: #dc3545;
+}
+
+/* List item hover effects */
+.list-unstyled li {
+    transition: all 0.3s ease;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.list-unstyled li:hover {
+    background: rgba(13,110,253,.1);
+    padding-left: 15px;
+}
+
+.list-unstyled li i {
+    transition: all 0.3s ease;
+}
+
+.list-unstyled li:hover i {
+    transform: scale(1.2);
+}
+
+/* Section transitions */
+section {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stagger section animations */
+section:nth-child(1) { animation-delay: 0.1s; }
+section:nth-child(2) { animation-delay: 0.2s; }
+section:nth-child(3) { animation-delay: 0.3s; }
+section:nth-child(4) { animation-delay: 0.4s; }
+
+/* Decorative elements animations */
+.decoration {
+    position: absolute;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Icon sizes */
+.icon-tiny { font-size: 0.8rem; }
+.icon-small { font-size: 1.2rem; }
+.icon-medium { font-size: 1.8rem; }
+.icon-large { font-size: 2.5rem; }
+.icon-huge { font-size: 3.2rem; }
+.icon-giant { font-size: 4rem; }
+
+/* Basic spin animation */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Floating animation */
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+}
+
+/* Wave animation */
+@keyframes wave {
+    0% { transform: translateX(0) translateY(0); }
+    25% { transform: translateX(10px) translateY(-10px); }
+    50% { transform: translateX(0) translateY(0); }
+    75% { transform: translateX(-10px) translateY(10px); }
+    100% { transform: translateX(0) translateY(0); }
+}
+
+/* Bounce animation */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-15px) scale(1.1); }
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 0.9; }
+    100% { transform: scale(1); opacity: 0.7; }
+}
+
+/* Zigzag animation */
+@keyframes zigzag {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(10px, -10px); }
+    50% { transform: translate(0, 0); }
+    75% { transform: translate(-10px, 10px); }
+    100% { transform: translate(0, 0); }
+}
+
+/* Orbit animation */
+@keyframes orbit {
+    from { transform: rotate(0deg) translateX(20px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(20px) rotate(-360deg); }
+}
+
+/* Swing animation */
+@keyframes swing {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(15deg); }
+    75% { transform: rotate(-15deg); }
+}
+
+/* Apply animations to different decorative elements */
+.flower-spin {
+    animation: spin 10s linear infinite;
+    color: #ffc107;
+    opacity: 0.3;
+}
+
+.flower-float {
+    animation: float 6s ease-in-out infinite;
+    color: #ff6b6b;
+    opacity: 0.3;
+}
+
+.flower-wave {
+    animation: wave 8s ease-in-out infinite;
+    color: #20c997;
+    opacity: 0.3;
+}
+
+.flower-bounce {
+    animation: bounce 4s ease-in-out infinite;
+    color: #fd7e14;
+    opacity: 0.3;
+}
+
+.flower-pulse {
+    animation: pulse 3s ease-in-out infinite;
+    color: #e83e8c;
+}
+
+.flower-zigzag {
+    animation: zigzag 7s linear infinite;
+    color: #6f42c1;
+    opacity: 0.3;
+}
+
+.flower-orbit {
+    animation: orbit 12s linear infinite;
+    color: #0dcaf0;
+    opacity: 0.3;
+}
+
+.flower-swing {
+    animation: swing 3s ease-in-out infinite;
+    color: #198754;
+    opacity: 0.3;
+}
+
+/* Star decorations */
+.star-spin {
+    animation: spin 15s linear infinite;
+    color: #ffd700;
+    opacity: 0.3;
+}
+
+.star-pulse {
+    animation: pulse 4s ease-in-out infinite;
+    color: #ffd700;
+    opacity: 0.3;
+}
+
+/* Heart decorations */
+.heart-float {
+    animation: float 5s ease-in-out infinite;
+    color: #ff6b6b;
+    opacity: 0.3;
+}
+
+.heart-pulse {
+    animation: pulse 3s ease-in-out infinite;
+    color: #ff6b6b;
+    opacity: 0.3;
+}
+
+/* Cloud decorations */
+.cloud-float {
+    animation: float 8s ease-in-out infinite;
+    color: #6c757d;
+    opacity: 0.3;
+}
+
+/* Sun decoration */
+.sun-spin {
+    animation: spin 20s linear infinite;
+    color: #ffc107;
+    opacity: 0.3;
+}
+
+/* Decorative flowers */
+.flower-decoration {
+    position: absolute;
+    font-size: 2rem;
+    color: #ffc107;
+    opacity: 0.3;
+    z-index: 1;
+    animation: spin 10s linear infinite;
+}
+
+.flower-1 {
+    top: 50px;
+    left: 50px;
+    animation-duration: 15s;
+}
+
+.flower-2 {
+    top: 100px;
+    right: 80px;
+    animation-duration: 20s;
+    animation-direction: reverse;
+}
+
+.flower-3 {
+    bottom: 80px;
+    left: 120px;
+    animation-duration: 18s;
+}
+
+.flower-4 {
+    bottom: 120px;
+    right: 150px;
+    animation-duration: 25s;
+    animation-direction: reverse;
+}
+
+.flower-small {
+    font-size: 1.5rem;
+    opacity: 0.4;
+}
+
+.flower-large {
+    font-size: 2.5rem;
+    opacity: 0.3;
+}
+
+.floating-flower {
+    position: absolute;
+    font-size: 1.8rem;
+    color: #ff6b6b;
+    opacity: 0.5;
+    animation: float 8s ease-in-out infinite;
+}
+
+.floating-1 { top: 15%; left: 5%; animation-delay: 0s; }
+.floating-2 { top: 25%; right: 8%; animation-delay: -1s; }
+.floating-3 { top: 45%; left: 7%; animation-delay: -2s; }
+.floating-4 { top: 65%; right: 6%; animation-delay: -3s; }
+.floating-5 { top: 85%; left: 10%; animation-delay: -4s; }
+
+/* Make decorations responsive */
+@media (max-width: 768px) {
+    .flower-decoration {
+        font-size: 1.5rem;
+    }
+    
+    .flower-small {
+        font-size: 1rem;
+    }
+    
+    .flower-large {
+        font-size: 2rem;
+    }
+    
+    .floating-flower {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .flower-1, .flower-3, .floating-1, .floating-3, .floating-5 {
+        left: 15px;
+    }
+    
+    .flower-2, .flower-4, .floating-2, .floating-4 {
+        right: 15px;
+    }
+}
+
+/* Additional responsive fixes */
+@media (max-width: 576px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    h4 {
+        font-size: 1.3rem;
+    }
+    
+    .card-body {
+        padding: 15px;
+    }
+    
+    .program-card:hover {
+        transform: translateY(-5px);
+    }
+}
