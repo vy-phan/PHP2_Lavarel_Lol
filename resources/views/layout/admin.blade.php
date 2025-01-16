@@ -44,7 +44,7 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="{{ route('client.trangchu') }}" class="brand-logo d-flex align-items-center">
+            <a href="" class="brand-logo d-flex align-items-center">
                 <img class="logo-abbr me-2" width="50" height="50" src="{{ asset('images/logos/logo_mamnon.png') }}" alt="Logo trường">
                 <div class="brand-title">
                     <h4 class="mb-0 text-primary">Little Sun</h4>
@@ -133,18 +133,18 @@
                     <h5 class="name"><span class="font-w400">Xin chào,</span> Admin</h5>
                 </div>
                 <ul class="metismenu" id="menu">
-                <li><a href="{{ route('admin.quanlytaikhoan') }}">
-                    <i class="fas fa-user"></i>
+                    <li><a href="{{ route('admin.quanlytaikhoan') }}">
+                            <i class="fas fa-user"></i>
                             <span class="nav-text">Quản lý tài khoản</span>
                         </a>
                     </li>
 
                     <li><a href="{{ route('admin.tuyensinh') }}">
-                    <i class="fas fa-user-plus"></i>
+                            <i class="fas fa-user-plus"></i>
                             <span class="nav-text">Quản lý tuyển sinh</span>
                         </a>
                     </li>
-        
+
                     <li><a aria-expanded="false">
                             <i class="fas fa-chalkboard-teacher"></i>
                             <span class="nav-text">Quản lý giáo viên</span>
@@ -168,16 +168,21 @@
                             <span class="nav-text">Quản lý lớp học</span>
                         </a>
                     </li>
-                    
+
                     <li><a aria-expanded="false">
                             <i class="fas fa-box"></i>
                             <span class="nav-text">Quản lý vật chất</span>
                         </a>
                     </li>
-
-                    <li><a aria-expanded="false">
-                            <i class="fas fa-comments"></i>
+                    <li><a aria-expanded="false" href="{{ route('admin.phanhoi') }}">
+                            <i class="fas fa-newspaper"></i>
                             <span class="nav-text">Quản lý phản hồi</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a aria-expanded="false">
+                            <i class="fas fa-newspaper"></i>
+                            <span class="nav-text">Quản lý tin tức</span>
                         </a>
                     </li>
                 </ul>
@@ -223,7 +228,7 @@
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>  {{ date('Y') }} Little Sun. Đã đăng ký bản quyền.
+                <p> {{ date('Y') }} Little Sun. Đã đăng ký bản quyền.
                 </p>
             </div>
         </div>

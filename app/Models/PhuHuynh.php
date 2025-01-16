@@ -9,22 +9,25 @@ class PhuHuynh extends Model
 {
     use HasFactory;
 
-    protected $table = 'phuhuynh';
+    protected $table = 'dangkytuvensinh';
 
     protected $fillable = [
-        'user_id',
-        'occupation'
+        'phuhuynh_name',
+        'phone',
+        'email',
+        'address',
+        'child_name',
+        'child_birth_date',
+        'child_gender',
+        'class_registered',
+        'notes',
+        'status',
+        'phuhuynh_id'
     ];
 
     // Relationship với User
     public function user()
     {
-        return $this->belongsTo(User::class);
-    }
-
-    // Relationship với TreEm
-    public function treem()
-    {
-        return $this->hasMany(TreEm::class, 'phuhuynh_id');
+        return $this->belongsTo(User::class, 'phuhuynh_id');
     }
 }

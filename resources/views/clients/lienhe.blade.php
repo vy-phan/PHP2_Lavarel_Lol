@@ -16,35 +16,46 @@
 
             <!-- Form góp ý bên phải -->
             <div class="col-md-6">
-                <h4>Góp ý với chúng tôi</h4>
-                <form>
-                    <!-- Tên -->
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="name" placeholder="Họ và tên">
-                    </div>
+                <h4>Gửi thông tin ý kiến</h4>
+                @auth
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                    <form action="{{ route('lienhe.store') }}" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="notes" class="form-label">Nội dung ý kiến</label>
+                            <textarea class="form-control @error('notes') is-invalid @enderror" 
+                                    id="notes" 
+                                    name="notes" 
+                                    rows="4" 
+                                    placeholder="Nhập nội dung ý kiến của bạn" 
+                                    required>{{ old('notes') }}</textarea>
+                            @error('notes')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
 
-                    <!-- Email -->
-                    <div class="mb-3">
-                        <input type="email" class="form-control" id="email" placeholder="Email">
+                        <div class="text-start mt-3">
+                            <button type="submit" class="btn" style="background-color: rgb(20, 194, 171); color: black; border: none;">
+                                Gửi ý kiến
+                            </button>
+                        </div>
+                    </form>
+                @else
+                    <div class="alert alert-info">
+                        Vui lòng <a href="{{ route('dangnhap') }}">đăng nhập</a> để gửi ý kiến.
                     </div>
-
-                    <!-- Chủ đề góp ý -->
-                    <div class="mb-3">
-                        <input type="text" class="form-control" id="subject" placeholder="Chủ đề góp ý">
-                    </div>
-
-                    <!-- Nội dung góp ý -->
-                    <div class="mb-3">
-                        <textarea class="form-control" id="feedback" rows="4" placeholder="Nội dung góp ý"></textarea>
-                    </div>
-
-                    <!-- Nút gửi -->
-                    <div class="text-start mt-3">
-                        <button type="submit" class="btn"
-                            style="background-color: rgb(20, 194, 171); color: black; border: none;">Gửi góp ý</button>
-                    </div>
-
-                </form>
+                @endauth
             </div>
         </div>
 

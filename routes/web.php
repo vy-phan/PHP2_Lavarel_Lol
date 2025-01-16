@@ -51,6 +51,8 @@ Route::get('/lien-he', function () {
     return view('clients.lienhe');
 })->name('lienhe');
 
+Route::post('/lien-he', [App\Http\Controllers\LienHeController::class, 'store'])->name('lienhe.store');
+
 // Authentication routes - thêm middleware guest
 Route::middleware('guest')->group(function () {
     // Hiển thị form đăng nhập
@@ -79,14 +81,7 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 // Admin routes
-Route::group(['middleware' => ['auth', 'auth.admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
-    Route::get('/quan-ly-tuyen-sinh', function () {
-        $pendingRegistrations = DangKyTuyenSinh::where('status', 'pending')->count();
-        $latestRegistrations = DangKyTuyenSinh::latest()->take(5)->get();
-
-        return view('admin.tuyensinh', compact('pendingRegistrations', 'latestRegistrations'));
-    })->name('tuyensinh');
-
+Route::middleware(['auth', 'auth.admin'])->name('admin.')->prefix('admin')->group(function () {
     // Quản lý tài khoản
     Route::get('/', function () {
         $users = \App\Models\User::all();
@@ -95,19 +90,30 @@ Route::group(['middleware' => ['auth', 'auth.admin'], 'prefix' => 'admin', 'as' 
             ->whereNotNull('email')
             ->get()
             ->groupBy('email')
-            ->map(function($items) {
+            ->map(function ($items) {
                 return $items->contains('status', 'approved');
             });
-        
+
         return view('admin.quanlytaikhoan', compact('users', 'registrations'));
     })->name('quanlytaikhoan');
 
+    // Quản lý tuyển sinh
+    Route::get('/quan-ly-tuyen-sinh', function () {
+        $pendingRegistrations = DangKyTuyenSinh::where('status', 'pending')->count();
+        $latestRegistrations = DangKyTuyenSinh::latest()->take(5)->get();
+
+        return view('admin.tuyensinh', compact('pendingRegistrations', 'latestRegistrations'));
+    })->name('tuyensinh');
+
+    // Quản lí phản hồi
+    Route::get('/quan-ly-phan-hoi', [App\Http\Controllers\Admin\FeedbackController::class, 'index'])->name('phanhoi');
+
     // Chỉnh sửa tài khoản
-    Route::get('/tai-khoan/chinh-sua/{user}', function(\App\Models\User $user) {
+    Route::get('/tai-khoan/chinh-sua/{user}', function (\App\Models\User $user) {
         return view('admin.taikhoan.chinhsua', compact('user'));
     })->name('taikhoan.chinhsua');
 
-    Route::put('/tai-khoan/cap-nhat/{user}', function(\App\Models\User $user) {
+    Route::put('/tai-khoan/cap-nhat/{user}', function (\App\Models\User $user) {
         $validated = request()->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $user->id,
@@ -121,18 +127,19 @@ Route::group(['middleware' => ['auth', 'auth.admin'], 'prefix' => 'admin', 'as' 
         ]);
 
         $user->update($validated);
-        
+
         return redirect()->route('admin.quanlytaikhoan')->with('success', 'Cập nhật tài khoản thành công');
     })->name('taikhoan.update');
 
     // Xóa tài khoản
-    Route::delete('/tai-khoan/xoa/{user}', function(\App\Models\User $user) {
-        if($user->role === 'admin') {
+    Route::delete('/tai-khoan/xoa/{user}', function (\App\Models\User $user) {
+        if ($user->role === 'admin') {
             return back()->with('error', 'Không thể xóa tài khoản admin');
         }
         $user->delete();
         return back()->with('success', 'Xóa tài khoản thành công');
     })->name('taikhoan.delete');
+
 
     // Quản lý đăng ký tuyển sinh
     Route::get('/tuyen-sinh', [DangKyTuyenSinhController::class, 'index'])->name('tuyensinh.index'); // Hiển thị danh sách đăng ký tuyển sinh

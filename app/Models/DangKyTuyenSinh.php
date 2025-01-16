@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class DangKyTuyenSinh extends Model
 {
@@ -35,9 +36,9 @@ class DangKyTuyenSinh extends Model
     const STATUS_APPROVED = 'approved';
     const STATUS_REJECTED = 'rejected';
 
-    public function phuhuynh()
+    public function user()
     {
-        return $this->belongsTo(PhuHuynh::class, 'phuhuynh_id');
+        return $this->belongsTo(User::class, 'phuhuynh_id', 'id');
     }
 
     // Kiểm tra xem đăng ký có đang chờ duyệt không
@@ -62,7 +63,7 @@ class DangKyTuyenSinh extends Model
     public function approve()
     {
         // Tạo phụ huynh mới
-        $phuhuynh = PhuHuynh::create([
+        $user = User::create([
             'name' => $this->phuhuynh_name,
             'email' => $this->email,
             'phone' => $this->phone,
@@ -71,7 +72,7 @@ class DangKyTuyenSinh extends Model
 
         // Cập nhật phuhuynh_id và trạng thái
         $this->update([
-            'phuhuynh_id' => $phuhuynh->id,
+            'phuhuynh_id' => $user->id,
             'status' => self::STATUS_APPROVED
         ]);
 
@@ -81,11 +82,11 @@ class DangKyTuyenSinh extends Model
             'birth_date' => $this->child_birth_date,
             'gender' => $this->child_gender,
             'class_registered' => $this->class_registered,
-            'phuhuynh_id' => $phuhuynh->id
+            'phuhuynh_id' => $user->id
         ]);
 
         return [
-            'phuhuynh' => $phuhuynh,
+            'user' => $user,
             'hocsinh' => $hocsinh
         ];
     }
