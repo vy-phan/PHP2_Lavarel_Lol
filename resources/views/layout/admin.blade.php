@@ -44,7 +44,7 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="" class="brand-logo d-flex align-items-center">
+            <a href="{{ route('clients.trangchu') }}" class="brand-logo d-flex align-items-center">
                 <img class="logo-abbr me-2" width="50" height="50" src="{{ asset('images/logos/logo_mamnon.png') }}" alt="Logo trường">
                 <div class="brand-title">
                     <h4 class="mb-0 text-primary">Little Sun</h4>
