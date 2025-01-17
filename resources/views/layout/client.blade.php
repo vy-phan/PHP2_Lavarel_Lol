@@ -68,7 +68,7 @@
 
         <nav class="navbar navbar-expand-lg bg-navbar shadow-sm">
             <div class="container">
-                <a class="navbar-brand d-block d-lg-none" href="">
+                <a class="navbar-brand d-block d-lg-none" href="{{route('client.trangchu')}}">
                     <div class="d-flex align-items-center">
                         <img class="logo-navbar me-2" src="images/logos/logo_mamnon.png" alt="">
                         <p class="text-danger fw-bold mb-2 pt-2 fs-6">
@@ -85,7 +85,7 @@
                 <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                     <ul class="navbar-nav fw-bold d-flex justify-content-between w-75">
                         <li class="nav-item text-uppercase">
-                            <a class="nav-link active" aria-current="page" href="{{route('trangchu')}}">Trang chủ</a>
+                            <a class="nav-link active" aria-current="page" href="{{route('client.trangchu')}}">Trang chủ</a>
                         </li>
                         <li class="nav-item text-uppercase">
                             <a class="nav-link" href="{{route('tuyensinh')}}">Tuyển sinh</a>

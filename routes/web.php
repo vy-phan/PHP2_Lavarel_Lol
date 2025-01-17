@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\TuyenSinhController;
 use App\Http\Controllers\Admin\DangKyTuyenSinhController;
 use App\Models\DangKyTuyenSinh;
@@ -45,7 +46,7 @@ Route::get('/lop-hoc', function () {
 })->name('lophoc');
 
 Route::get('/tin-tuc-va-su-kien', function () {
-    return view('clients.tintuc');
+    return view('clients.tintuc_sukien');
 })->name('tintuc');
 
 Route::get('/lien-he', function () {
@@ -123,7 +124,7 @@ Route::middleware(['auth', 'auth.admin'])->name('admin.')->prefix('admin')->grou
             'role' => 'required|in:admin,user,giaovien'
         ]);
 
-        \Log::info('Cập nhật tài khoản:', [
+        Log::info('Cập nhật tài khoản:', [
             'user_id' => $user->id,
             'old_data' => $user->toArray(),
             'new_data' => $validated

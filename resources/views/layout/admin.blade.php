@@ -44,7 +44,7 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="{{route('client.trangchu')}}" class="brand-logo d-flex align-items-center">
+            <a href="{{ route('client.trangchu') }}" class="brand-logo d-flex align-items-center">
                 <img class="logo-abbr me-2" width="50" height="50" src="{{ asset('images/logos/logo_mamnon.png') }}" alt="Logo trường">
                 <div class="brand-title">
                     <h4 class="mb-0 text-primary">Little Sun</h4>
@@ -175,7 +175,7 @@
                         </a>
                     </li>
                     <li><a aria-expanded="false" href="{{ route('admin.phanhoi') }}">
-                            <i class="fas fa-newspaper"></i>
+                            <i class="fas fa-comment"></i>
                             <span class="nav-text">Quản lý phản hồi</span>
                         </a>
                     </li>
@@ -183,6 +183,12 @@
                         <a aria-expanded="false">
                             <i class="fas fa-newspaper"></i>
                             <span class="nav-text">Quản lý tin tức</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a aria-expanded="false">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="nav-text">Quản lý sự kiện</span>
                         </a>
                     </li>
                 </ul>
