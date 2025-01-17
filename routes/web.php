@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\TuyenSinhController;
 use App\Http\Controllers\Admin\DangKyTuyenSinhController;
 use App\Models\DangKyTuyenSinh;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,6 +80,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Đăng xuất
     Route::post('/dangxuat', [AuthController::class, 'dangxuat'])->name('dangxuat');
+
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 });
 
 // Admin routes
@@ -147,3 +150,10 @@ Route::middleware(['auth', 'auth.admin'])->name('admin.')->prefix('admin')->grou
     Route::get('/tuyen-sinh/{dangKyTuyenSinh}', [DangKyTuyenSinhController::class, 'show'])->name('tuyensinh.show'); // Hiển thị chi tiết đăng ký tuyển sinh
     Route::put('/tuyen-sinh/{dangKyTuyenSinh}', [DangKyTuyenSinhController::class, 'update'])->name('tuyensinh.update'); // Cập nhập thông tin đăng ký tuyển sinh
 });
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+});
+
+Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
