@@ -280,6 +280,14 @@
                     <div class="card shadow" id="registration-form">
                         <div class="card-body p-5">
                             <h3 class="text-center text-danger mb-4 fw-bold">ĐĂNG KÝ NHẬP HỌC</h3>
+                            
+                            @if(session('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            @endif
+
                             @if($errors->any())
                                 <div class="alert alert-danger">
                                     <ul class="mb-0">
@@ -392,7 +400,10 @@
                                     <textarea name="notes" class="form-control" rows="3">{{ old('notes') }}</textarea>
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-danger px-5">Gửi đăng ký</button>
+                                    <button type="submit" class="btn btn-submit-custom">
+                                        <i class='bx bx-send'></i>
+                                        Gửi đăng ký
+                                    </button>
                                 </div>
                             </form>
                         </div>

@@ -78,10 +78,6 @@
                             <h5>Thông tin bổ sung</h5>
                             <table class="table table-bordered">
                                 <tr>
-                                    <th width="20%">Ghi chú</th>
-                                    <td>{{ $registration->notes ?: 'Không có' }}</td>
-                                </tr>
-                                <tr>
                                     <th>Trạng thái</th>
                                     <td>
                                         @switch($registration->status ?? 'pending')

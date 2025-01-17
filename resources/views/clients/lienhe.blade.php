@@ -1,61 +1,65 @@
 <x-client-layout>
 {{-- Link to custom CSS --}}
     <link href="{{ asset('css/lienhe.css') }}" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <div class="container my-5">
+    <div class="contact-container">
         <div class="row">
             <!-- Thông tin liên hệ bên trái -->
             <div class="col-md-6">
-                <h4>TRƯỜNG MẦM NON LITTLE SUN</h4>
-                <p>12 Trịnh Đình Thảo, Phường Hòa Thanh, Quận Tân Phú, TP Hồ Chí Minh</p>
-                <p><strong>Hotline:</strong> 0123 456 789</p>
-                <p><strong>Email:</strong> tuyensinh@littesun.com</p>
-                <p><strong>Website:</strong> <a class="text-decoration-none text-black" href="http://littlesunschool.com"
-                        target="_blank">Littlesunschool.com</a></p>
+                <div class="contact-info">
+                    <h4><i class='bx bxs-school me-2'></i>TRƯỜNG MẦM NON LITTLE SUN</h4>
+                    <p><i class='bx bxs-map me-2'></i>12 Trịnh Đình Thảo, Phường Hòa Thanh, Quận Tân Phú, TP Hồ Chí Minh</p>
+                    <p><i class='bx bxs-phone me-2'></i><strong>Hotline:</strong> 0123 456 789</p>
+                    <p><i class='bx bxs-envelope me-2'></i><strong>Email:</strong> tuyensinh@littesun.com</p>
+                    <p><i class='bx bx-globe me-2'></i><strong>Website:</strong> <a class="text-decoration-none" href="http://littlesunschool.com" target="_blank">Littlesunschool.com</a></p>
+                </div>
             </div>
 
             <!-- Form góp ý bên phải -->
             <div class="col-md-6">
-                <h4>Gửi thông tin ý kiến</h4>
-                @auth
-                    @if(session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-                    @if(session('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
-                        </div>
-                    @endif
-                    <form action="{{ route('lienhe.store') }}" method="POST">
-                        @csrf
-                        <div class="mb-3">
-                            <label for="notes" class="form-label">Nội dung ý kiến</label>
-                            <textarea class="form-control @error('notes') is-invalid @enderror" 
-                                    id="notes" 
-                                    name="notes" 
-                                    rows="4" 
-                                    placeholder="Nhập nội dung ý kiến của bạn" 
-                                    required>{{ old('notes') }}</textarea>
-                            @error('notes')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
+                <div class="feedback-form">
+                    <h4><i class='bx bxs-message-dots me-2'></i>Gửi thông tin ý kiến</h4>
+                    @auth
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                <i class='bx bxs-check-circle me-2'></i>{{ session('success') }}
+                            </div>
+                        @endif
+                        @if(session('error'))
+                            <div class="alert alert-danger">
+                                <i class='bx bxs-x-circle me-2'></i>{{ session('error') }}
+                            </div>
+                        @endif
+                        <form action="{{ route('lienhe.store') }}" method="POST">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="notes" class="form-label">Nội dung ý kiến</label>
+                                <textarea class="form-control @error('notes') is-invalid @enderror" 
+                                        id="notes" 
+                                        name="notes" 
+                                        rows="4" 
+                                        placeholder="Nhập nội dung ý kiến của bạn" 
+                                        required>{{ old('notes') }}</textarea>
+                                @error('notes')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
 
-                        <div class="text-start mt-3">
-                            <button type="submit" class="btn" style="background-color: rgb(20, 194, 171); color: black; border: none;">
-                                Gửi ý kiến
-                            </button>
+                            <div class="text-end mt-4">
+                                <button type="submit" class="btn-submit">
+                                    <i class='bx bx-send'></i>Gửi ý kiến
+                                </button>
+                            </div>
+                        </form>
+                    @else
+                        <div class="alert alert-info">
+                            <i class='bx bx-info-circle me-2'></i>Vui lòng <a href="{{ route('dangnhap') }}" class="alert-link">đăng nhập</a> để gửi ý kiến.
                         </div>
-                    </form>
-                @else
-                    <div class="alert alert-info">
-                        Vui lòng <a href="{{ route('dangnhap') }}">đăng nhập</a> để gửi ý kiến.
-                    </div>
-                @endauth
+                    @endauth
+                </div>
             </div>
         </div>
 

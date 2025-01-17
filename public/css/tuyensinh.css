@@ -475,3 +475,58 @@ section:nth-child(4) { animation-delay: 0.4s; }
         transform: translateY(-5px);
     }
 }
+
+
+.btn-submit-custom {
+    background: linear-gradient(45deg, #ff6b6b, #e63946);
+    color: white;
+    border: none;
+    padding: 12px 35px;
+    border-radius: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(230, 57, 70, 0.2);
+}
+
+.btn-submit-custom:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(230, 57, 70, 0.4);
+    background: linear-gradient(45deg, #e63946, #ff6b6b);
+}
+
+.btn-submit-custom:active {
+    transform: translateY(1px);
+}
+
+.btn-submit-custom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.btn-submit-custom:hover::before {
+    left: 100%;
+}
+
+.btn-submit-custom i {
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+}
+
+.btn-submit-custom:hover i {
+    transform: rotate(360deg);
+}

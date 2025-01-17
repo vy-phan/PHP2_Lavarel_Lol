@@ -384,7 +384,7 @@
             </p>
         </div>
     </div>
-    <a class="btn btn-custom mt-4" href="{{ url('tuyensinh') }}">Xem Chi Tiết</a>
+    <a class="btn btn-custom mt-4" href="{{ route('tuyensinh') }}">Xem Chi Tiết</a>
 </div>
 
 <script>

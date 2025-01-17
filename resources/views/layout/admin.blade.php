@@ -175,7 +175,7 @@
                         </a>
                     </li>
                     <li><a aria-expanded="false" href="{{ route('admin.phanhoi') }}">
-                            <i class="fas fa-newspaper"></i>
+                            <i class="fas fa-comment"></i>
                             <span class="nav-text">Quản lý phản hồi</span>
                         </a>
                     </li>
@@ -183,6 +183,12 @@
                         <a aria-expanded="false">
                             <i class="fas fa-newspaper"></i>
                             <span class="nav-text">Quản lý tin tức</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a aria-expanded="false">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="nav-text">Quản lý sự kiện</span>
                         </a>
                     </li>
                 </ul>
