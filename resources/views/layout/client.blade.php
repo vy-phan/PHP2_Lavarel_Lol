@@ -117,6 +117,12 @@
                                 Chào, {{ auth()->user()->name }}
                             </a>
                             <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{ route('profile.edit') }}" class="dropdown-item d-flex align-items-center justify-content-center">
+                                        <i class='bx bx-user me-2'></i> Profile
+                                    </a>
+                                </li>
+                                
                                 @if(auth()->user()->role === 'admin')
                                 <li>
                                     <a href="{{ route('admin.quanlytaikhoan') }}" class="dropdown-item d-flex align-items-center justify-content-center">
@@ -124,6 +130,7 @@
                                     </a>
                                 </li>
                                 @endif
+                                
                                 <li>
                                     <form action="{{ route('dangxuat') }}" method="POST" id="logout-form">
                                         @csrf
