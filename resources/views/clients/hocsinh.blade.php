@@ -1,13 +1,15 @@
-<x-client-layout>
+@extends('layout.client')
 
-    @auth
+@section('content')
 
-        <h1 class="text-center p-5"class="text-center p-5">Đây là trang thông tin học sinh</h1>
+@auth
 
-    @endauth
+<h1 class="text-center p-5" class="text-center p-5">Đây là trang thông tin học sinh</h1>
 
-    @guest
-        <h1 class="text-center p-5">Vui lòng đăng nhập</h1>
-    @endguest
+@endauth
 
-</x-client-layout>
+@guest
+<h1 class="text-center p-5">Vui lòng đăng nhập</h1>
+@endguest
+
+@endsection

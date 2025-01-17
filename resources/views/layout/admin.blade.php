@@ -180,13 +180,13 @@
                         </a>
                     </li>
                     <li>
-                        <a aria-expanded="false">
+                        <a aria-expanded="false" href="{{ route('admin.tintuc') }}">
                             <i class="fas fa-newspaper"></i>
                             <span class="nav-text">Quản lý tin tức</span>
                         </a>
                     </li>
                     <li>
-                        <a aria-expanded="false">
+                        <a aria-expanded="false" href="{{ route('admin.sukien') }}">
                             <i class="fas fa-calendar-alt"></i>
                             <span class="nav-text">Quản lý sự kiện</span>
                         </a>

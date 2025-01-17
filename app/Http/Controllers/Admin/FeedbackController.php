@@ -20,7 +20,7 @@ class FeedbackController extends Controller
             ->get();
 
         // Trả về view kèm theo dữ liệu feedbacks 
-        return view('admin.feedback.phanhoi', compact('feedbacks'));
+        return view('admin.feedback.quanlyphanhoi', compact('feedbacks'));
     }
 
     /**

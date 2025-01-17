@@ -104,7 +104,7 @@
                             </ul>
                         </li>
                         <li class="nav-item text-uppercase">
-                            <a class="nav-link" href="{{route('tintuc')}}">Tin tức và sự kiện</a>
+                            <a class="nav-link" href="{{route('tintuc.sukien')}}">Tin tức và sự kiện</a>
                         </li>
                         <li class="nav-item text-uppercase">
                             <a class="nav-link" href="{{route('lienhe')}}">Liên hệ</a>
@@ -157,7 +157,7 @@
     </div>
 
     <main>
-        {{ $slot }}
+        @yield('content')
     </main>
 
     <footer class="footer-area text-white pt-5">
@@ -215,7 +215,7 @@
                             <div class="col-md-4">
                                 <ul class="footer-links">
                                     <li><a class=" fs-6" href="#">Phụ huynh</a></li>
-                                    <li><a class=" fs-6" href="#">Tin tức và sự kiện</a></li>
+                                    <li><a class=" fs-6" href="{{route('tintuc.sukien')}}">Tin tức và sự kiện</a></li>
                                     <li><a class=" fs-6" href="">Liên hệ</a></li>
                                 </ul>
                             </div>
@@ -244,6 +244,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    @stack('scripts')
 </body>
 
 </html>

@@ -21,20 +21,16 @@ use App\Http\Controllers\ProfileController;
 */
 
 // Public routes - không cần đăng nhập
-Route::get('/', function () {
-    // Kiểm tra người dùng đã đăng nhập và có vai trò là admin thì chuyển đến trang quản trị
-    if (auth()->check() && auth()->user()->role === 'admin') {
-        return redirect()->route('admin.quanlytaikhoan');
-    }
-    return view('clients.trangchu');
-})->name('trangchu');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route riêng cho trang chủ client không redirect admin
 Route::get('/home', function () {
     return view('clients.trangchu');
 })->name('client.trangchu');
 
-
+// Client routes
+Route::get('/tin-tuc-su-kien', [App\Http\Controllers\TinTucController::class, 'clientIndex'])
+    ->name('tintuc.sukien');
 
 // Tuyển sinh routes
 Route::get('/tuyen-sinh', [TuyenSinhController::class, 'index'])->name('tuyensinh');
@@ -44,10 +40,6 @@ Route::post('/tuyen-sinh', [TuyenSinhController::class, 'store'])->name('tuyensi
 Route::get('/lop-hoc', function () {
     return view('clients.lophoc');
 })->name('lophoc');
-
-Route::get('/tin-tuc-va-su-kien', function () {
-    return view('clients.tintuc_sukien');
-})->name('tintuc');
 
 Route::get('/lien-he', function () {
     return view('clients.lienhe');
@@ -82,12 +74,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/dangxuat', [AuthController::class, 'dangxuat'])->name('dangxuat');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+
+    // Tin tức & Sự kiện
 });
 
 // Admin routes
 Route::middleware(['auth', 'auth.admin'])->name('admin.')->prefix('admin')->group(function () {
     // Quản lý tài khoản
-    Route::get('/', function () {
+    Route::get('/taikhoan', function () {
         $users = \App\Models\User::all();
         // Lấy danh sách email và trạng thái từ bảng đăng ký tuyển sinh
         $registrations = \App\Models\DangKyTuyenSinh::select('email', 'status')
@@ -98,7 +92,7 @@ Route::middleware(['auth', 'auth.admin'])->name('admin.')->prefix('admin')->grou
                 return $items->contains('status', 'approved');
             });
 
-        return view('admin.quanlytaikhoan', compact('users', 'registrations'));
+        return view('admin.taikhoan.quanlytaikhoan', compact('users', 'registrations'));
     })->name('quanlytaikhoan');
 
     // Quản lý tuyển sinh
@@ -106,11 +100,27 @@ Route::middleware(['auth', 'auth.admin'])->name('admin.')->prefix('admin')->grou
         $pendingRegistrations = DangKyTuyenSinh::where('status', 'pending')->count();
         $latestRegistrations = DangKyTuyenSinh::latest()->take(5)->get();
 
-        return view('admin.tuyensinh', compact('pendingRegistrations', 'latestRegistrations'));
+        return view('admin.tuyensinh.tuyensinh', compact('pendingRegistrations', 'latestRegistrations'));
     })->name('tuyensinh');
 
     // Quản lí phản hồi
     Route::get('/quan-ly-phan-hoi', [App\Http\Controllers\Admin\FeedbackController::class, 'index'])->name('phanhoi');
+
+    // Quản lý tin tức 
+    Route::get('/quan-ly-tin-tuc', [App\Http\Controllers\Admin\TinTucController::class, 'index'])->name('tintuc');
+    Route::get('/quan-ly-tin-tuc/create', [App\Http\Controllers\Admin\TinTucController::class, 'create'])->name('tintuc.create');
+    Route::post('/quan-ly-tin-tuc', [App\Http\Controllers\Admin\TinTucController::class, 'store'])->name('tintuc.store');
+    Route::get('/quan-ly-tin-tuc/{tintuc}/edit', [App\Http\Controllers\Admin\TinTucController::class, 'edit'])->name('tintuc.edit');
+    Route::put('/quan-ly-tin-tuc/{tintuc}', [App\Http\Controllers\Admin\TinTucController::class, 'update'])->name('tintuc.update');
+    Route::delete('/quan-ly-tin-tuc/{tintuc}', [App\Http\Controllers\Admin\TinTucController::class, 'destroy'])->name('tintuc.destroy');
+
+    // Quản lý sự kiện
+    Route::get('/quan-ly-su-kien', [App\Http\Controllers\Admin\SuKienController::class, 'index'])->name('sukien');
+    Route::get('/quan-ly-su-kien/create', [App\Http\Controllers\Admin\SuKienController::class, 'create'])->name('sukien.create');
+    Route::post('/quan-ly-su-kien', [App\Http\Controllers\Admin\SuKienController::class, 'store'])->name('sukien.store');
+    Route::get('/quan-ly-su-kien/{sukien}/edit', [App\Http\Controllers\Admin\SuKienController::class, 'edit'])->name('sukien.edit');
+    Route::put('/quan-ly-su-kien/{sukien}', [App\Http\Controllers\Admin\SuKienController::class, 'update'])->name('sukien.update');
+    Route::delete('/quan-ly-su-kien/{sukien}', [App\Http\Controllers\Admin\SuKienController::class, 'destroy'])->name('sukien.destroy');
 
     // Chỉnh sửa tài khoản
     Route::get('/tai-khoan/chinh-sua/{user}', function (\App\Models\User $user) {
@@ -149,6 +159,16 @@ Route::middleware(['auth', 'auth.admin'])->name('admin.')->prefix('admin')->grou
     Route::get('/tuyen-sinh', [DangKyTuyenSinhController::class, 'index'])->name('tuyensinh.index'); // Hiển thị danh sách đăng ký tuyển sinh
     Route::get('/tuyen-sinh/{dangKyTuyenSinh}', [DangKyTuyenSinhController::class, 'show'])->name('tuyensinh.show'); // Hiển thị chi tiết đăng ký tuyển sinh
     Route::put('/tuyen-sinh/{dangKyTuyenSinh}', [DangKyTuyenSinhController::class, 'update'])->name('tuyensinh.update'); // Cập nhập thông tin đăng ký tuyển sinh
+
+    // Quản lý tin tức
+    Route::resource('tin-tuc', App\Http\Controllers\Admin\TinTucController::class)->names([
+        'index' => 'tintuc.index',
+        'create' => 'tintuc.create',
+        'store' => 'tintuc.store',
+        'edit' => 'tintuc.edit',
+        'update' => 'tintuc.update',
+        'destroy' => 'tintuc.destroy'
+    ]);
 });
 
 Route::middleware(['auth'])->group(function () {

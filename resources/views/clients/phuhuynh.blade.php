@@ -1,5 +1,6 @@
-<x-client-layout>
+@extends('layout.client')
 
+@section('content')
 
 @auth
 
@@ -11,5 +12,4 @@
 <h1 class="text-center p-5">Vui lòng đăng nhập</h1>
 @endguest
 
-
-</x-client-layout>
+@endsection

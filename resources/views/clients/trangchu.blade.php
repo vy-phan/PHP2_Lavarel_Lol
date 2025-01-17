@@ -1,8 +1,9 @@
-<x-client-layout>
+@extends('layout.client')
     
 {{-- Link to custom CSS --}}
 <link href="{{ asset('css/trangchu.css') }}" rel="stylesheet">
 
+@section('content')
 {{-- Carousel --}}
 <div id="carouselExampleAutoplaying" class="carousel slide " data-bs-ride="carousel">
     <div class="carousel-inner">
@@ -441,4 +442,5 @@
     });
 </script>
 
-</x-client-layout>
+
+@endsection

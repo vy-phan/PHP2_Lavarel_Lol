@@ -1,5 +1,6 @@
-<x-client-layout>
-{{-- Link to custom CSS --}}
+@extends('layout.client')
+@section('content')
+    {{-- Link to custom CSS --}}
     <link href="{{ asset('css/lienhe.css') }}" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -73,4 +74,5 @@
         </div>
 
     </div>
-</x-client-layout>
+
+    @endsection
