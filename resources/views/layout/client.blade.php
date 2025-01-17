@@ -104,7 +104,7 @@
                             </ul>
                         </li>
                         <li class="nav-item text-uppercase">
-                            <a class="nav-link" href="{{route('tintuc.sukien')}}">Tin tức và sự kiện</a>
+                            <a class="nav-link" href="{{route('tintuc_sukien')}}">Tin tức và sự kiện</a>
                         </li>
                         <li class="nav-item text-uppercase">
                             <a class="nav-link" href="{{route('lienhe')}}">Liên hệ</a>
@@ -215,7 +215,7 @@
                             <div class="col-md-4">
                                 <ul class="footer-links">
                                     <li><a class=" fs-6" href="#">Phụ huynh</a></li>
-                                    <li><a class=" fs-6" href="{{route('tintuc.sukien')}}">Tin tức và sự kiện</a></li>
+                                    <li><a class=" fs-6" href="{{route('tintuc_sukien')}}">Tin tức và sự kiện</a></li>
                                     <li><a class=" fs-6" href="">Liên hệ</a></li>
                                 </ul>
                             </div>

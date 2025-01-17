@@ -37,4 +37,16 @@ class TinTucSuKienController extends Controller
             ]);
         }
     }
+
+    public function tinTucDetail($id)
+    {
+        $tintuc = TinTuc::findOrFail($id);
+        return view('clients.tintuc_detail', compact('tintuc'));
+    }
+
+    public function suKienDetail($id)
+    {
+        $sukien = ThongBaoSuKien::findOrFail($id);
+        return view('clients.sukien_detail', compact('sukien'));
+    }
 }

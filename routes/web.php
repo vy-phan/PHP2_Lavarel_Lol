@@ -177,3 +177,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
+
+// Routes cho tin tức và sự kiện
+Route::get('/tin-tuc-su-kien', [App\Http\Controllers\TinTucSuKienController::class, 'index'])->name('tintuc_sukien');
+Route::get('/tin-tuc/{id}', [App\Http\Controllers\TinTucSuKienController::class, 'tinTucDetail'])->name('tintuc.detail');
+Route::get('/su-kien/{id}', [App\Http\Controllers\TinTucSuKienController::class, 'suKienDetail'])->name('sukien.detail');

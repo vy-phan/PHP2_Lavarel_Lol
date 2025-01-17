@@ -31,7 +31,7 @@
                                     </div>
                                 </div>
                                 <p class="card-text">{{ Str::limit($latestNews->noi_dung, 300) }}</p>
-                                <a href="#" class="btn btn-read-more">
+                                <a href="{{ route('tintuc.detail', $latestNews->id) }}" class="btn btn-read-more">
                                     <span>Xem thêm</span>
                                     <i class='bx bx-right-arrow-alt'></i>
                                 </a>
@@ -58,7 +58,7 @@
                                         </div>
                                     </div>
                                     <p class="card-text">{{ Str::limit($tin->noi_dung, 100) }}</p>
-                                    <a href="#" class="btn btn-read-more">
+                                    <a href="{{ route('tintuc.detail', $tin->id) }}" class="btn btn-read-more btn-primary">
                                         <span>Xem thêm</span>
                                         <i class='bx bx-right-arrow-alt'></i>
                                     </a>
@@ -97,24 +97,29 @@
                                 <h5 class="card-title">{{ $latestEvent->tieu_de }}</h5>
                                 <div class="meta-info">
                                     <div class="date">
-                                        <i class='bx bx-calendar-event'></i>
+                                        <i class='bx bx-calendar'></i>
                                         <span>{{ date('d/m/Y', strtotime($latestEvent->ngay_dien_ra)) }}</span>
                                     </div>
                                     <div class="time ms-3">
-                                        <i class='bx bx-time-five'></i>
+                                        <i class='bx bx-time'></i>
                                         <span>{{ $latestEvent->thoi_gian_bat_dau }} - {{ $latestEvent->thoi_gian_ket_thuc }}</span>
+                                    </div>
+                                    <div class="status ms-3">
+                                        <span class="badge {{ strtolower(str_replace(' ', '-', $latestEvent->trang_thai)) }}">
+                                            {{ $latestEvent->trang_thai }}
+                                        </span>
                                     </div>
                                 </div>
                                 <p class="card-text">{{ Str::limit($latestEvent->mo_ta, 300) }}</p>
-                                <a href="#" class="btn btn-details">
-                                    <span>Chi tiết</span>
+                                <a href="{{ route('sukien.detail', $latestEvent->id) }}" class="btn btn-read-more">
+                                    <span>Xem thêm</span>
                                     <i class='bx bx-right-arrow-alt'></i>
                                 </a>
                             </div>
                         </div>
                     @endif
                 </div>
-
+                
                 <div class="col-md-6">
                     <!-- Other events - smaller cards -->
                     <div class="small-cards-container">
@@ -124,17 +129,22 @@
                                     <h5 class="card-title">{{ $event->tieu_de }}</h5>
                                     <div class="meta-info">
                                         <div class="date">
-                                            <i class='bx bx-calendar-event'></i>
+                                            <i class='bx bx-calendar'></i>
                                             <span>{{ date('d/m/Y', strtotime($event->ngay_dien_ra)) }}</span>
                                         </div>
                                         <div class="time ms-3">
-                                            <i class='bx bx-time-five'></i>
+                                            <i class='bx bx-time'></i>
                                             <span>{{ $event->thoi_gian_bat_dau }} - {{ $event->thoi_gian_ket_thuc }}</span>
+                                        </div>
+                                        <div class="status ms-3">
+                                            <span class="badge {{ strtolower(str_replace(' ', '-', $event->trang_thai)) }}">
+                                                {{ $event->trang_thai }}
+                                            </span>
                                         </div>
                                     </div>
                                     <p class="card-text">{{ Str::limit($event->mo_ta, 100) }}</p>
-                                    <a href="#" class="btn btn-details">
-                                        <span>Chi tiết</span>
+                                    <a href="{{ route('sukien.detail', $event->id) }}" class="btn btn-read-more">
+                                        <span>Xem thêm</span>
                                         <i class='bx bx-right-arrow-alt'></i>
                                     </a>
                                 </div>
