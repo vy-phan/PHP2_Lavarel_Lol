@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.client')
 
 @section('content')
 {{-- Link to custom CSS --}}
