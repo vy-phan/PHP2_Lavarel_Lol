@@ -40,7 +40,7 @@ class AuthController extends Controller
     Auth::login($user);
 
     // Sử dụng hàm redirectTo để xác định trang chuyển hướng
-    return redirect()->route('trangchu');
+    return redirect()->route('home');
   }
 
   // Đăng nhập tài khoản
@@ -66,7 +66,7 @@ class AuthController extends Controller
       } elseif ($user->role === 'giaovien') {
         return redirect()->route('giaovien.trangchu');
       } else {
-        return redirect()->route('trangchu');
+        return redirect()->route('home');
       }
     } else {
       // Nếu không khớp, thông báo lỗi
@@ -80,6 +80,6 @@ class AuthController extends Controller
     Auth::logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();
-    return redirect()->route('trangchu');
+    return redirect()->route('home');
   }
 }

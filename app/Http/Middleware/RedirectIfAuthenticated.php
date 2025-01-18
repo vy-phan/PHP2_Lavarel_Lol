@@ -45,7 +45,7 @@ class RedirectIfAuthenticated
                 }
                 
                 // Nếu không phải từ trang protected nào, về trang chủ
-                return redirect()->route('trangchu');
+                return redirect()->route('home');
             }
         }
 
