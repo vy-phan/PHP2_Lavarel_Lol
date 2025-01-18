@@ -1,4 +1,6 @@
-<x-client-layout>
+@extends('layout.client')
+
+@section('content')
     {{-- Link to custom CSS --}}
     <link href="{{ asset('css/dangnhap.css') }}" rel="stylesheet">
     <div class="vh-100 d-flex justify-content-center align-items-center login-background">
@@ -69,4 +71,4 @@
             </div>
         </div>
     </div>
-</x-client-layout>
+@endsection
