@@ -8,9 +8,21 @@ use Illuminate\Http\Request;
 
 class SuKienController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $sukien = ThongBaoSuKien::orderBy('created_at', 'desc')->paginate(10);
+        $query = ThongBaoSuKien::query();
+        
+        if ($request->has('trang_thai') && $request->trang_thai != '') {
+            $query->where('trang_thai', $request->trang_thai);
+        }
+
+        $sukien = $query->orderBy('created_at', 'desc')->paginate(10);
+        
+        // Append the query parameters to pagination links
+        if ($request->has('trang_thai')) {
+            $sukien->appends(['trang_thai' => $request->trang_thai]);
+        }
+        
         return view('admin.tintuc_sukien.sukien', compact('sukien'));
     }
 

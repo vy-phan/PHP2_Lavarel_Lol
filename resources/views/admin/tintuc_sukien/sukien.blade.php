@@ -1,4 +1,7 @@
 <x-admin-layout>
+    {{-- Link to custom CSS --}}
+    <link href="{{ asset('css/sukien_detail.css') }}" rel="stylesheet">
+    
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -19,6 +22,20 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         @endif
+
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <form action="{{ route('admin.sukien') }}" method="GET" class="filter-container">
+                                    <label class="filter-label">Lọc theo trạng thái:</label>
+                                    <select name="trang_thai" class="status-filter" onchange="this.form.submit()">
+                                        <option value="">-- Tất cả trạng thái --</option>
+                                        <option value="Sắp diễn ra" {{ request('trang_thai') == 'Sắp diễn ra' ? 'selected' : '' }}>Sắp diễn ra</option>
+                                        <option value="Đang diễn ra" {{ request('trang_thai') == 'Đang diễn ra' ? 'selected' : '' }}>Đang diễn ra</option>
+                                        <option value="Đã kết thúc" {{ request('trang_thai') == 'Đã kết thúc' ? 'selected' : '' }}>Đã kết thúc</option>
+                                    </select>
+                                </form>
+                            </div>
+                        </div>
 
                         <div class="table-responsive">
                             <table class="table table-hover">

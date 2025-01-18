@@ -32,6 +32,16 @@
                                 <i class='bx bxs-x-circle me-2'></i>{{ session('error') }}
                             </div>
                         @endif
+                        @php
+                            $dangky = App\Models\DangKyTuyenSinh::where('email', Auth::user()->email)
+                                        ->where('status', 'approved')
+                                        ->first();
+                        @endphp
+                        @if(!$dangky)
+                            <div class="alert alert-warning">
+                                <i class='bx bxs-error me-2'></i>Vui lòng chờ xác thực tài khoản để có quyền gửi ý kiến
+                            </div>
+                        @endif
                         <form action="{{ route('lienhe.store') }}" method="POST">
                             @csrf
                             <div class="mb-3">
@@ -41,6 +51,7 @@
                                         name="notes" 
                                         rows="4" 
                                         placeholder="Nhập nội dung ý kiến của bạn" 
+                                        {{ !$dangky ? 'disabled' : '' }}
                                         required>{{ old('notes') }}</textarea>
                                 @error('notes')
                                     <div class="invalid-feedback">
@@ -50,7 +61,7 @@
                             </div>
 
                             <div class="text-end mt-4">
-                                <button type="submit" class="btn-submit">
+                                <button type="submit" class="btn-submit" {{ !$dangky ? 'disabled' : '' }}>
                                     <i class='bx bx-send'></i>Gửi ý kiến
                                 </button>
                             </div>
