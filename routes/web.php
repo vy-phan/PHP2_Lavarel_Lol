@@ -122,6 +122,20 @@ Route::middleware(['auth', 'auth.admin'])->name('admin.')->prefix('admin')->grou
     Route::put('/quan-ly-su-kien/{sukien}', [App\Http\Controllers\Admin\SuKienController::class, 'update'])->name('sukien.update');
     Route::delete('/quan-ly-su-kien/{sukien}', [App\Http\Controllers\Admin\SuKienController::class, 'destroy'])->name('sukien.destroy');
 
+    // Quản lý phụ huynh
+    Route::get('/phuhuynh', [App\Http\Controllers\Admin\PhuHuynhController::class, 'index'])->name('phuhuynh.index');
+    Route::get('/phuhuynh/{phuHuynh}', [App\Http\Controllers\Admin\PhuHuynhController::class, 'show'])->name('phuhuynh.show');
+    Route::get('/phuhuynh/{phuHuynh}/edit', [App\Http\Controllers\Admin\PhuHuynhController::class, 'edit'])->name('phuhuynh.edit');
+    Route::put('/phuhuynh/{phuHuynh}', [App\Http\Controllers\Admin\PhuHuynhController::class, 'update'])->name('phuhuynh.update');
+    Route::delete('/phuhuynh/{phuHuynh}', [App\Http\Controllers\Admin\PhuHuynhController::class, 'destroy'])->name('phuhuynh.destroy');
+
+    // Quản lý học sinh
+    Route::get('/hocsinh', [App\Http\Controllers\Admin\HocSinhController::class, 'index'])->name('hocsinh.index');
+    Route::get('/hocsinh/{hocSinh}', [App\Http\Controllers\Admin\HocSinhController::class, 'show'])->name('hocsinh.show');
+    Route::get('/hocsinh/{hocSinh}/edit', [App\Http\Controllers\Admin\HocSinhController::class, 'edit'])->name('hocsinh.edit');
+    Route::put('/hocsinh/{hocSinh}', [App\Http\Controllers\Admin\HocSinhController::class, 'update'])->name('hocsinh.update');
+    Route::delete('/hocsinh/{hocSinh}', [App\Http\Controllers\Admin\HocSinhController::class, 'destroy'])->name('hocsinh.destroy');
+
     // Chỉnh sửa tài khoản
     Route::get('/tai-khoan/chinh-sua/{user}', function (\App\Models\User $user) {
         return view('admin.taikhoan.chinhsua', compact('user'));

@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\DangKyTuyenSinh;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,5 +27,7 @@ class AppServiceProvider extends ServiceProvider
 
         // Đăng ký alias cho component admin
         Blade::component('layout.admin', 'admin-layout');
+
+        Schema::defaultStringLength(191);
     }
 }

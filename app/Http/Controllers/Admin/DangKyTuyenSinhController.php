@@ -28,7 +28,8 @@ class DangKyTuyenSinhController extends Controller
         $registration = DangKyTuyenSinh::findOrFail($dangKyTuyenSinh);
         // Cập nhập trang thái của đăng ký
         $registration->update([
-            'status' => $request->status
+            'status' => $request->status,
+            'phuhuynh_id' => $request->phuhuynh_id // Cập nhật phuhuynh_id
         ]);
 
         return redirect()->route('admin.quanlytaikhoan')

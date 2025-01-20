@@ -19,10 +19,13 @@ return new class extends Migration
             $table->integer('so_luong_toi_da')->default(30);
             $table->string('nam_hoc');
             $table->decimal('hoc_phi', 10, 2)->default(0.00);
-            $table->enum('loai_lop', ['Chất lượng cao', 'Thông thường'])->default('Thông thường');
+            $table->enum('loai_lop', ['Nhà trẻ', 'Mẫu giáo nhỡ', 'Mẫu giáo lớn', 'Mẫu giáo chồi'])->default('Nhà trẻ');
             $table->enum('trang_thai', ['Đang hoạt động', 'Tạm ngưng'])->default('Đang hoạt động');
             $table->text('mo_ta')->nullable();
             $table->timestamps();
+
+            // Thêm index cho các cột thường được tìm kiếm
+            $table->index(['loai_lop', 'trang_thai']);
         });
     }
 

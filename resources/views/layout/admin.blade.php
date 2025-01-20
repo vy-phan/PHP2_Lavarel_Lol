@@ -12,6 +12,9 @@
     <link href="{{ asset('vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+    
+    <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/1234567890.js" crossorigin="anonymous"></script>
@@ -151,13 +154,13 @@
                         </a>
                     </li>
 
-                    <li><a aria-expanded="false">
+                    <li><a href="{{ route('admin.phuhuynh.index') }}">
                             <i class="fas fa-user-friends"></i>
                             <span class="nav-text">Quản lý phụ huynh</span>
                         </a>
                     </li>
 
-                    <li><a aria-expanded="false">
+                    <li><a href="{{ route('admin.hocsinh.index') }}">
                             <i class="fas fa-user-graduate"></i>
                             <span class="nav-text">Quản lý học sinh</span>
                         </a>
@@ -214,14 +217,17 @@
                             <div class="card-body">
                                 <div id="calendar" class="app-fullcalendar">
                                     <main>
-                                        {{$slot}}
+                                        @hasSection('content')
+                                            @yield('content')
+                                        @else
+                                            {{ $slot ?? '' }}
+                                        @endif
                                     </main>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <!--**********************************

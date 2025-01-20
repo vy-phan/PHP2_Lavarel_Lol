@@ -114,5 +114,113 @@ class DatabaseSeeder extends Seeder
         ];
 
         DB::table('thongbaosukien')->insert($sukiens);
+
+        // Tạo dữ liệu cho giáo viên
+        $giaoviens = [
+            [
+                'user_id' => 1,
+                'name' => 'Nguyễn Thị Hương',
+                'email' => 'huong.nt@example.com',
+                'phone' => '0901234567',
+                'address' => '123 Nguyễn Văn Cừ, Quận 5, TP.HCM',
+                'subject' => 'Giáo viên chủ nhiệm',
+                'specialization' => 'Cử nhân Sư phạm Mầm non',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'user_id' => 2,
+                'name' => 'Trần Văn Nam',
+                'email' => 'nam.tv@example.com',
+                'phone' => '0912345678',
+                'address' => '456 Lê Đại Hành, Quận 11, TP.HCM',
+                'subject' => 'Giáo viên Âm nhạc',
+                'specialization' => 'Cử nhân Âm nhạc',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'user_id' => 1,
+                'name' => 'Phạm Thị Mai',
+                'email' => 'mai.pt@example.com',
+                'phone' => '0923456789',
+                'address' => '789 Cách Mạng Tháng 8, Quận 3, TP.HCM',
+                'subject' => 'Giáo viên Mỹ thuật',
+                'specialization' => 'Cử nhân Mỹ thuật',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'user_id' => 2,
+                'name' => 'Lê Thị Thanh',
+                'email' => 'thanh.lt@example.com',
+                'phone' => '0934567890',
+                'address' => '321 Võ Văn Tần, Quận 3, TP.HCM',
+                'subject' => 'Giáo viên chủ nhiệm',
+                'specialization' => 'Thạc sĩ Giáo dục Mầm non',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+        ];
+
+        DB::table('giaovien')->insert($giaoviens);
+
+        // Tạo dữ liệu cho lớp học
+        $lophocs = [
+            [
+                'giaovien_id' => 1,
+                'ten_lop' => 'Lớp Hoa Mai',
+                'khoi_lop' => 'Mầm',
+                'so_luong_toi_da' => 25,
+                'nam_hoc' => '2024-2025',
+                'hoc_phi' => 2500000.00,
+                'loai_lop' => 'Nhà trẻ',
+                'trang_thai' => 'Đang hoạt động',
+                'mo_ta' => 'Lớp dành cho trẻ từ 18-24 tháng tuổi',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'giaovien_id' => 4,
+                'ten_lop' => 'Lớp Hoa Lan',
+                'khoi_lop' => 'Chồi',
+                'so_luong_toi_da' => 30,
+                'nam_hoc' => '2024-2025',
+                'hoc_phi' => 2800000.00,
+                'loai_lop' => 'Mẫu giáo chồi',
+                'trang_thai' => 'Đang hoạt động',
+                'mo_ta' => 'Lớp dành cho trẻ từ 4-5 tuổi',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'giaovien_id' => 1,
+                'ten_lop' => 'Lớp Hoa Hồng',
+                'khoi_lop' => 'Lá',
+                'so_luong_toi_da' => 30,
+                'nam_hoc' => '2024-2025',
+                'hoc_phi' => 3000000.00,
+                'loai_lop' => 'Mẫu giáo lớn',
+                'trang_thai' => 'Đang hoạt động',
+                'mo_ta' => 'Lớp dành cho trẻ từ 5-6 tuổi',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'giaovien_id' => 3,
+                'ten_lop' => 'Lớp Hoa Cúc',
+                'khoi_lop' => 'Mầm',
+                'so_luong_toi_da' => 25,
+                'nam_hoc' => '2024-2025',
+                'hoc_phi' => 2500000.00,
+                'loai_lop' => 'Mẫu giáo nhỡ',
+                'trang_thai' => 'Đang hoạt động',
+                'mo_ta' => 'Lớp dành cho trẻ từ 3-4 tuổi',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+        ];
+
+        DB::table('lophoc')->insert($lophocs);
     }
 }

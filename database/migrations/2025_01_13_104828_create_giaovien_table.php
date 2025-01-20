@@ -14,7 +14,12 @@ return new class extends Migration
         Schema::create('giaovien', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('subject');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('phone');
+            $table->string('address');
+            $table->string('subject'); // Môn học
+            $table->string('specialization'); // Bằng cấp
             $table->timestamps();
         });
     }
